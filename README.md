@@ -17,14 +17,13 @@ Functionality:
 - Create aliases for URLs: `m/` => `mail.google.com`
 - Support dynamic aliases: `r/eli5` => `reddit.com/r/eli5`
 - Save the aliases using Chrome sync
+- Display favorite aliases
 
 TODOs:
 
 - Popup:
 
-  - Set up HTML
-  - Hook up event listeners
-  - Respond to events (navigate)
+  - Handle navigation
   - Apply styling
 
 - Background:
