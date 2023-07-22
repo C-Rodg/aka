@@ -1,17 +1,9 @@
-const testAliases = [
-	{
-		alias: 'g/',
-		redirect: 'https://google.com',
-	},
-	{
-		alias: 'e/',
-		redirect: 'https://espn.com',
-	},
-	{
-		alias: 'r/###',
-		redirect: 'https://redit.com/r/###',
-	},
-];
+// TODO: Get from storage.
+const testAliases = {
+	g: 'https://google.com',
+	e: 'https://espn.com',
+	'r/###': 'https://redit.com/r/###',
+};
 
 function renderResults() {
 	// Empty the search results
@@ -19,21 +11,23 @@ function renderResults() {
 
 	// Create the results to show.
 	const resultsListEl = document.createElement('ul');
-	testAliases.forEach((result) => {
+	const aliasKeys = Object.keys(testAliases);
+	aliasKeys.forEach((key) => {
+		const val = testAliases[key];
 		// Create the list element with data props attached.
 		const li = document.createElement('li');
-		li.dataset.alias = result.alias;
-		li.dataset.redirect = result.redirect;
+		li.dataset.alias = key;
+		li.dataset.redirect = val;
 
 		// Create the alias element.
 		const aliasEl = document.createElement('div');
 		aliasEl.classList.add('alias');
-		aliasEl.textContent = result.alias;
+		aliasEl.textContent = key;
 
 		// Create the redirect element.
 		const redirectEl = document.createElement('div');
 		redirectEl.classList.add('redirect');
-		redirectEl.textContent = result.redirect;
+		redirectEl.textContent = val;
 
 		// Attach the alias, redirect, and list element to the results.
 		li.appendChild(aliasEl);
